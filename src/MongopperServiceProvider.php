@@ -26,7 +26,7 @@ class MongopperServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/config.php' => config_path('mongodb.php')
+            __DIR__ . '/../config/config.php' => config_path('mongodb.php')
         ]);
 
     }
@@ -49,7 +49,7 @@ class MongopperServiceProvider extends ServiceProvider
             $configuration->setHydratorNamespace('MongoDbHydrator');
             $configuration->setDefaultDB(config('mongodb.default_db', 'laravel'));
             // Request whatever mapping driver is bound to the interface.
-            $configuration->setMetadataDriverImpl(AnnotationDriver::create(app_path('Documents')));
+            $configuration->setMetadataDriverImpl(AnnotationDriver::create(app_path(config('mongodb.documentsPath'))));
 
             return DocumentManager::create($connection, $configuration);
         });
