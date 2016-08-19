@@ -27,7 +27,7 @@ class MongopperServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/config.php' => config_path('mongodb.php')
-        ]);
+        ], 'mongo');
 
     }
 
