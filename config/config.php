@@ -8,5 +8,5 @@
 
 return [
     'documentsPath' => 'Documents',
-    'database' => 'homestead',
+    'database'      => 'homestead',
 ];

@@ -1,6 +1,7 @@
 {
     "name": "marginshale/mongopper",
     "description": "Doctrine MongoDB ODM wrapper for laravel",
+    "version": "1.0.0",
     "require": {
         "php": "^5.6 || ^7.0",
         "ext-mongo": "^1.5",
