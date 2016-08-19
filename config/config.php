@@ -7,5 +7,6 @@
  */
 
 return [
-    'documentsPath' => 'Documents'
+    'documentsPath' => 'Documents',
+    'database' => 'homestead',
 ];
