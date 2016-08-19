@@ -1,5 +1,5 @@
 {
-    "name": "kz/mongopper",
+    "name": "marginshale/mongopper",
     "description": "Doctrine MongoDB ODM wrapper for laravel",
     "require": {
         "laravel/framework": "^5.2",
