@@ -9,4 +9,5 @@
 return [
     'documentsPath' => 'Documents',
     'database'      => 'homestead',
+    'password'      => 'secret',
 ];
