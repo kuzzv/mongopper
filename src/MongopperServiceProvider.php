@@ -30,7 +30,7 @@ class MongopperServiceProvider extends ServiceProvider
             __DIR__ . '/../config/config.php' => config_path('mongodb.php')
         ], 'mongo');
 
-        Auth::provider('mongo', function (Application $app, array $config) {
+        \Auth::provider('mongo', function (Application $app, array $config) {
             return new MongoUserProvider($app[DocumentManager::class], $app['hash'], $config['model']);
         });
     }
