@@ -1,4 +1,7 @@
 <?php
+
+namespace Mongopper\Auth;
+
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;

@@ -15,7 +15,7 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use MongoUserProvider;
+use Mongopper\Auth\MongoUserProvider;
 
 class MongopperServiceProvider extends ServiceProvider
 {
