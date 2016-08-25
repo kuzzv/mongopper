@@ -44,6 +44,8 @@ class MongopperServiceProvider extends ServiceProvider
     {
         $this->app->singleton(DocumentManager::class, function (Application $app) {
 
+            $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'mongodb');
+
             $config = config('mongodb');
             $server = "mongodb://" . $config['host'] . ":" . $config['port'];
             $options = array_only($config, ['username', 'password']);
@@ -58,9 +60,15 @@ class MongopperServiceProvider extends ServiceProvider
             $configuration->setDefaultDB(config('mongodb.database', 'laravel'));
             // Request whatever mapping driver is bound to the interface.
             $configuration->setMetadataDriverImpl(AnnotationDriver::create(app_path(config('mongodb.documentsPath'))));
+            AnnotationDriver::registerAnnotationClasses();
 
             return DocumentManager::create($connection, $configuration);
         });
+    }
+
+    public function provides()
+    {
+        return [DocumentManager::class];
     }
 
 }
