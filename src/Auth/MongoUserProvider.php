@@ -112,7 +112,7 @@ class MongoUserProvider implements UserProvider
             }
         }
 
-        return $query->limit(1)->getQuery()->execute();
+        return $query->limit(1)->getQuery()->getSingleResult();
     }
 
     /**
