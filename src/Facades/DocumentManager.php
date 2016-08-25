@@ -1,4 +1,7 @@
 <?php
+
+namespace Mongopper\Facades;
+
 use Illuminate\Support\Facades\Facade;
 
 /**
