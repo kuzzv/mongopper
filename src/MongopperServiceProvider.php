@@ -13,6 +13,7 @@ use Doctrine\MongoDB\Connection;
 use Doctrine\ODM\MongoDB\Configuration;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
+use Doctrine\ODM\MongoDB\Mapping\Driver\YamlDriver;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Mongopper\Auth\MongoUserProvider;
@@ -27,7 +28,7 @@ class MongopperServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/config.php' => config_path('mongodb.php')
+            __DIR__ . '/../config/config.php' => config_path('mongodb.php'),
         ], 'mongo');
 
         \Auth::provider('mongo', function (Application $app, array $config) {
@@ -59,8 +60,20 @@ class MongopperServiceProvider extends ServiceProvider
             $configuration->setHydratorNamespace('MongoDbHydrator');
             $configuration->setDefaultDB(config('mongodb.database', 'laravel'));
             // Request whatever mapping driver is bound to the interface.
-            $configuration->setMetadataDriverImpl(AnnotationDriver::create(app_path(config('mongodb.documentsPath'))));
-            AnnotationDriver::registerAnnotationClasses();
+
+            $mapping = config('mongodb.mapping', 'yaml');
+            $mappingFilesPath = config('mongodb.mapping_files_path', 'Mappings');
+            switch ($mapping) {
+                case 'yaml': {
+                    $driver = new YamlDriver($mappingFilesPath);
+                    break;
+                }
+                default : {
+                    $driver = AnnotationDriver::create(app_path(config('mongodb.documentsPath')));
+                    AnnotationDriver::registerAnnotationClasses();
+                }
+            }
+            $configuration->setMetadataDriverImpl($driver);
 
             return DocumentManager::create($connection, $configuration);
         });

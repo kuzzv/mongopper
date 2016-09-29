@@ -7,10 +7,12 @@
  */
 
 return [
-    'documentsPath' => 'Documents',
-    'host'          => env('MONGO_HOST', 'homestead'),
-    'database'      => env('MONGO_DATABASE', 'homestead'),
-    'password'      => env('MONGO_PASSWORD', 'secret'),
-    'port'          => env('MONGO_PORT', '27017'),
-    'username'      => env('MONGO_USERNAME', 'homestead'),
+    'documentsPath'      => 'Documents',
+    'mapping'            => 'yaml',
+    'mapping_files_path' => 'Mappings',
+    'host'               => env('MONGO_HOST', 'homestead'),
+    'database'           => env('MONGO_DATABASE', 'homestead'),
+    'password'           => env('MONGO_PASSWORD', 'secret'),
+    'port'               => env('MONGO_PORT', '27017'),
+    'username'           => env('MONGO_USERNAME', 'homestead'),
 ];
