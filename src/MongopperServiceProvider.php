@@ -65,7 +65,7 @@ class MongopperServiceProvider extends ServiceProvider
             $mappingFilesPath = config('mongodb.mapping_files_path', 'Mappings');
             switch ($mapping) {
                 case 'yaml': {
-                    $driver = new YamlDriver($mappingFilesPath);
+                    $driver = new YamlDriver(app_path($mappingFilesPath));
                     break;
                 }
                 default : {
